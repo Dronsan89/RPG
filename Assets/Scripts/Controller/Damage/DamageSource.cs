@@ -3,10 +3,10 @@ using UnityEngine;
 [System.Serializable]
 public class DamageSource
 {
-    [SerializeField] DamageType type;
-    [SerializeField] int damage;
-    [SerializeField, Range(0, 1)] float critChance;
-    [SerializeField, Range(0, 1)] float critDamage;
+    [SerializeField] private DamageType type;
+    [SerializeField] private int damage;
+    [SerializeField, Range(0, 1)] private float critChance;
+    [SerializeField, Range(0, 1)] private float critDamage;
 
     public DamageType Type { get => type; set => type = value; }
     public int Damage { get => damage; set => damage = value; }

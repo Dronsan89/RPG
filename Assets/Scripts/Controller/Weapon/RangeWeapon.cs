@@ -3,6 +3,8 @@ using UnityEngine;
 public abstract class RangeWeapon : Weapon
 {
     [SerializeField] protected Transform fireFrom;
+    [SerializeField] private float weaponLength;
+    [SerializeField] private int maxShots;
 
     public override WeaponType Type => WeaponType.Range;
 
@@ -14,14 +16,12 @@ public abstract class RangeWeapon : Weapon
         private set => Mathf.Clamp(value, 0, maxShots);
     }
 
-    [SerializeField] float weaponLength;
-    [SerializeField] int maxShots;
-
     protected Player player;
 
     public virtual void Construct(Player p)
     {
         player = p;
+        Shots = 10;
     }
 
     public bool AddAmmo(int shots)
@@ -37,8 +37,8 @@ public abstract class RangeWeapon : Weapon
 
     public override void Update()
     {
-        /*if (Shots == 0)
-            IsActive = false;*/
+        if (Shots == 0)
+            IsActive = false;
 
         if (IsActive)
         {

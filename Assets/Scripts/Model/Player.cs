@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] MoveController move;
-    //[SerializeField] GameObject playerView;
-    //[SerializeField] Vector3 fireFrom;
-    //[SerializeField] Health health;
-    [SerializeField] RangeWeapon rangeWeapon;
-    //[SerializeField] MeleeWeapon meleeWeapon;
+    [SerializeField] private MoveController move;
+    //[SerializeField] private GameObject playerView;
+    //[SerializeField] private Health health;
+    [SerializeField] private RangeWeapon rangeWeapon;
+    //[SerializeField] private MeleeWeapon meleeWeapon;
 
     public Vector3 Aim => currentInput.Aim;
     public Quaternion Rotation => move.Rotation;
@@ -23,8 +22,8 @@ public class Player : MonoBehaviour
     public LookAtCamera Camer => camer;
 
     private InputBase currentInput;
-    LookAtCamera camer;
-    Quaternion offserRotateShootDirection;
+    private LookAtCamera camer;
+    private Quaternion offserRotateShootDirection;
 
     public void Construct(InputBase input, LookAtCamera cam)
     {
@@ -41,12 +40,8 @@ public class Player : MonoBehaviour
 
     }
 
-    void Update()
+    private void Update()
     {
-        //transform.position += move.MoveUpdate(currentInput);
 
-        //playerView.transform.rotation = move.RotateUpdate(currentInput);
     }
-
-
 }

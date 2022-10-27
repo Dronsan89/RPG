@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-    [SerializeField] float range;
-    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] private float range;
+    [SerializeField] private LayerMask enemyLayer;
 
     public override WeaponType Type => WeaponType.Melee;
     public float Range => range;
@@ -72,5 +72,4 @@ public class MeleeWeapon : Weapon
         Gizmos.DrawWireSphere(transform.position, range);
     }
 #endif
-
 }

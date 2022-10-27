@@ -9,8 +9,6 @@ public class Main : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] private LookAtCamera cam;
 
-
-
     private void Awake()
     {
         if (Instance != null)
@@ -32,10 +30,6 @@ public class Main : MonoBehaviour
         player.Construct(inputBase, cam);
         cam.GetComponent<LookAtCamera>().Construct(player.Transform);
         //inventory.Construct();
-
-        //planets.Construct(account.Missions);
-        //loadout.Construct(inventory, account.ItemLoadouts, account.Soldiers, account.SelectedSoldier);
-        //CurrentAccount = account;
     }
 
     /// <summary>

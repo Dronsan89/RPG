@@ -3,7 +3,6 @@ using UnityEngine;
 public class LookAtCamera : MonoBehaviour
 {
     private Transform target;
-
     private Vector3 offset;
 
     public void Construct(Transform transformTarget)

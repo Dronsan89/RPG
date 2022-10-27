@@ -49,16 +49,11 @@ public class Bow : RangeWeapon
 
     public override void MakeDamage()
     {
-        //Debug.Log(1);
         var newProjectile = Instantiate(projectile, fireFrom.position, player.ShootDirection);
-        //Debug.Log("player.ShootDirection: " + player.ShootDirection);
-        //Debug.Log("speed bow1: " + Speed);
-        //Debug.Log("tension: " + tension);
-        //Debug.Log("tension*Speed: " + tension * Speed);
         newProjectile.GetComponent<Projectile>().Construct(Speed * tension);
         newProjectile.GetComponent<Projectile>().Hit += Hit;
-        tension = 0;
 
+        tension = 0;
     }
 
     private void Hit(Health health) => damageSource.DealDamage(player.gameObject, health);
