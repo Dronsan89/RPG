@@ -55,7 +55,7 @@ public class MeleeWeapon : Weapon
         }
         return closestEnemy != null;
     }
-    public override void MakeDamage()
+    protected override void MakeDamage()
     {
         damageSource.DealDamage(player.gameObject, Enemy);
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bow : RangeWeapon
@@ -35,25 +36,33 @@ public class Bow : RangeWeapon
             IsAttaking = true;
             //StartCoroutine(RopeReturn());
         }
-        if (isPressed)
+        /*if (isPressed)
         {
             if (tension < FireRate)
             {
                 tension += Time.deltaTime;
             }
-            //ropeTransform.localPosition = Vector3.Lerp(ropeNearPosition, ropeFarPosition, tension);
-        }
+            ropeTransform.localPosition = Vector3.Lerp(ropeNearPosition, ropeFarPosition, tension);
+        }*/
 
         base.Update();
     }
 
-    public override void MakeDamage()
+    protected override void MakeDamage()
     {
-        var newProjectile = Instantiate(projectile, fireFrom.position, player.ShootDirection);
-        newProjectile.GetComponent<Projectile>().Construct(Speed * tension);
-        newProjectile.GetComponent<Projectile>().Hit += Hit;
+        player.ShootAnimation();
 
-        tension = 0;
+        StartCoroutine(SpawnProjectile());
+
+        //tension = 0;
+    }
+
+    IEnumerator SpawnProjectile()
+    {
+        yield return new WaitForSeconds(2);
+        var newProjectile = Instantiate(projectile, fireFrom.position, player.ShootDirection);
+        newProjectile.GetComponent<Projectile>().Construct(Speed /** tension*/);
+        newProjectile.GetComponent<Projectile>().Hit += Hit;
     }
 
     private void Hit(Health health) => damageSource.DealDamage(player.gameObject, health);

@@ -28,7 +28,7 @@ public class Main : MonoBehaviour
     public void Init()
     {
         player.Construct(inputBase, cam);
-        cam.GetComponent<LookAtCamera>().Construct(player.Transform);
+        //cam.Construct(player.Transform);
         //inventory.Construct();
     }
 

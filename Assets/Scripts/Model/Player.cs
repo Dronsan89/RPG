@@ -3,10 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private MoveController move;
-    //[SerializeField] private GameObject playerView;
     //[SerializeField] private Health health;
     [SerializeField] private RangeWeapon rangeWeapon;
     //[SerializeField] private MeleeWeapon meleeWeapon;
+    [SerializeField] private Animator animator;
 
     public Vector3 Aim => currentInput.Aim;
     public Quaternion Rotation => move.Rotation;
@@ -16,23 +16,23 @@ public class Player : MonoBehaviour
     //public MeleeWeapon MeleeWeapon { get; set; }
     public RangeWeapon RangeWeapon { get; set; }
     //public Vector3 ShootPosition => fireFrom;
-    public Quaternion ShootDirection => camer.transform.rotation*offserRotateShootDirection;
+    public Quaternion ShootDirection => camer.transform.rotation*offsetRotateShootDirection;
     //public Health Health => health;
 
     public LookAtCamera Camer => camer;
 
     private InputBase currentInput;
     private LookAtCamera camer;
-    private Quaternion offserRotateShootDirection;
+    private Quaternion offsetRotateShootDirection;
 
     public void Construct(InputBase input, LookAtCamera cam)
     {
         Loading();
         currentInput = input;
-        move.Construct(cam);
+        move.Construct(cam, this);
         rangeWeapon.Construct(this);
         camer = cam;
-        offserRotateShootDirection = Quaternion.Euler(- 5, -2, 0);
+        offsetRotateShootDirection = Quaternion.Euler(- 5, -2, 0);
     }
 
     private void Loading()
@@ -40,8 +40,13 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        animator.SetFloat("speed", move.Velocity.magnitude);
+    }
 
+    public void ShootAnimation()
+    {
+        animator.SetTrigger("shoot");
     }
 }

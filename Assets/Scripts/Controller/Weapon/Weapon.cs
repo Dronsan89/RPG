@@ -21,20 +21,14 @@ public abstract class Weapon : MonoBehaviour
 
     protected float currentFireRate;
 
-    public abstract void MakeDamage();
+    protected abstract void MakeDamage();
 
     public virtual void Update()
     {
         currentFireRate += Time.deltaTime;
 
-        /*if (IsAttaking && currentFireRate > fireRate - 0.1f)
-        {
-            IsAttaking = false;
-        }*/
-
         if (currentFireRate > FireRate && IsAttaking)
         {
-            Debug.Log(2);
             //IsAttaking = true;
             MakeDamage();
             currentFireRate = 0;

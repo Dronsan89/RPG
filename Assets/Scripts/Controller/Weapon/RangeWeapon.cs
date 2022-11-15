@@ -8,12 +8,14 @@ public abstract class RangeWeapon : Weapon
 
     public override WeaponType Type => WeaponType.Range;
 
+    private int shots;
+
     public float Length => weaponLength;
 
     public int Shots
     {
-        get => Shots;
-        private set => Mathf.Clamp(value, 0, maxShots);
+        get => shots;
+        private set => shots = Mathf.Clamp(value, 0, maxShots);
     }
 
     protected Player player;

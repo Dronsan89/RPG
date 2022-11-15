@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
+    /*public Vector3 AngleRotate { get; set; }
+
     private Transform target;
-    private Vector3 offset;
+    private float offsetRotationX = 8;
 
     public void Construct(Transform transformTarget)
     {
         target = transformTarget;
-        offset = transform.position - target.position;
     }
 
-    void FixedUpdate()
+    public void MoveAndRotate()
     {
-        Vector3 desiredPosition = target.transform.position + offset;
-        //transform.position = desiredPosition;
-    }
+        transform.position = target.transform.position;
+
+        transform.localRotation = Quaternion.Euler(-AngleRotate.x + offsetRotationX, AngleRotate.y, 0);
+    }*/
 }

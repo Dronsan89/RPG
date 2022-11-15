@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Stats : MonoBehaviour
+[System.Serializable]
+public class Stats
 {
     public float Speed { get; set; }
     public float HP { get; set; }
